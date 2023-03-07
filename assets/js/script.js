@@ -1,7 +1,7 @@
-let displayWeather = document.getElementById('');
+let displayWeather = document.getElementById('city-container');
 
 function weatherApi(longitude, latitude){
-    var weatherUrlRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid={4a4acc2ad2028b514da851eb7125f0ac}`; 
+    var weatherUrlRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid={4a4acc2ad2028b514da851eb7125f0ac}`; 
     // when "Google maps" API is implemented, be sure to add in the ${lat} & ${lon} to the API snippet above.
 
     fetch(weatherUrlRequest){
@@ -13,7 +13,7 @@ function weatherApi(longitude, latitude){
             var weatherInfo = data.list;
 
             weatherInfo.forEach(list => {
-                var weatherCard = document.createElement('div');
+                var weatherCard = document.createElement('');
                 weatherCard.innerHTML = ``; 
                 // add an HTML card /w tailwind API CSS info to line 17
                 
