@@ -16,9 +16,9 @@
     </header>
     <div class="max-w-md mx-auto my-4 px-4 py-2 bg-white rounded-lg shadow-md">
         <h2 class="text-lg font-bold mb-2">Search for a City</h2>
-        <form>
+        <form id="search-form">
             <div class="flex mb-4">
-                <input class="w-full px-3 py-2 border border-gray-400 rounded-lg" type="text"
+                <input id='city-input' class="w-full px-3 py-2 border border-gray-400 rounded-lg" type="text"
                     placeholder="Enter city name...">
                 <button class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
                     type="submit" id="search-button">Search</button>
@@ -33,6 +33,7 @@
             style="border:0" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&PARAMETERS" allowfullscreen>
         </iframe></div>
+        <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
