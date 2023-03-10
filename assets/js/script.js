@@ -10,9 +10,8 @@ function weatherApi(cityName) {
             return response.json();
         })
         .then(function (data) {
-            
-            var temperature = data.main.temp;
-            var description = data.weather[0].description;
+            var temperature = `${Math.round(data.main.temp)} \u00B0F`;
+            var description = data.weather[0].description.toUpperCase();
 
             let latitude = data.coord.lat;
             let longitude = data.coord.lon;
@@ -28,12 +27,19 @@ function weatherApi(cityName) {
             var weatherCard = document.createElement('div');
             displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
-            <h3 class="text-lg font-bold"> ${description}</h3 >
+            <h3 class="text-lg text-center font-bold"> ${description}</h3 >
             <p>Current temperature is ${temperature}</p>
             `;
             // add an HTML card /w tailwind API CSS info to line 17
 
             displayWeather.append(weatherCard);
+            var myLat = localStorage.getItem("lat");
+            var myLon = localStorage.getItem("lon");
+            var myLatLon = myLat + "," + myLon;
+            // console.log(myLatLon);
+            var map = document.getElementById("map");
+            map.src = "https://www.google.com/maps/embed/v1/view?key=AIzaSyDINBNfJky5chXW3us-42CNV9_4tRgMIdE&zoom=10&center=" + myLatLon;
+            console.log(map.src);
         });
 }
 
@@ -42,27 +48,13 @@ const form = document.getElementById('search-form')
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     //testcode
-var lat = localStorage.getItem("lat");
-var lon = localStorage.getItem("lon");
-var latlon = lat+","+lon;
-
-console.log(latlon);
-
-var map = document.getElementById("map");
-
-var srcValue = map.getAttribute("src");
-
-var newSrcValue = srcValue.replace("-33.8569,151.2152", latlon);
-
-
-map.setAttribute("src", newSrcValue);
-//.....
     const cityName = document.querySelector("#city-input").value;
     console.log(cityName);
     if (cityName){
         weatherApi(cityName);
+    }
+   
+});
 
-}});
-
-weatherApi('Seattle');
+weatherApi();
 
