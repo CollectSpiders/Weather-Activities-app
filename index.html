@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
     <title>Weather Based Activities</title>
 </head>
 
-<body>
+<body class="h-full">
     <header class="text-center my-5 bg-blue-500 text-white p-5">
         <h1 class="text-4xl font-bold">Weather Based Activities</h1>
     </header>
@@ -26,13 +26,15 @@
         </form>
     </div>
     <!-- container for the city name and weather information -->
-    <div id="city-container" class="flex justify-between flex-wrap my-4"></div>
+    <div id="city-container" class="flex justify-center flex-wrap my-4"></div>
 
     <!-- container for the map of the searched area -->
-    <div id="map-container" class="flex justify-center my-4"><iframe width="450" height="250" frameborder="0"
-            style="border:0" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&PARAMETERS" allowfullscreen>
-        </iframe></div>
+    <div id="map" class="flex justify-center min-w-sm max-w-2xl h-1/2 mx-auto"></div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer>
+    </script>
+    </div>
         <script src="./assets/js/script.js"></script>
 </body>
 
