@@ -10,13 +10,17 @@ function weatherApi(cityName) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            
             var temperature = data.main.temp;
             var description = data.weather[0].description;
-            let lat = data.coord.lat;
-            let long = data.coord.long;
+            let latitude = data.coord.lat;
+            let longitude = data.coord.lon;
+            console.log(latitude)
+            localStorage.setItem("lat", latitude);
+            localStorage.setItem("lon", longitude);
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
+            displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
             <h3 class="text-lg font-bold"> ${description}</h3 >
             <p>Current temperature is ${temperature}</p>
@@ -29,26 +33,30 @@ function weatherApi(cityName) {
 
 const searchButton = document.getElementById('search-button');
 const form = document.getElementById('search-form')
-console.log(form);
 form.addEventListener('submit', function (event) {
     event.preventDefault();
+    //testcode
+var lat = localStorage.getItem("lat");
+var lon = localStorage.getItem("lon");
+var latlon = lat+","+lon;
+
+console.log(latlon);
+
+var map = document.getElementById("map");
+
+var srcValue = map.getAttribute("src");
+
+var newSrcValue = srcValue.replace("-33.8569,151.2152", latlon);
+
+
+map.setAttribute("src", newSrcValue);
+//.....
     const cityName = document.querySelector("#city-input").value;
     console.log(cityName);
     if (cityName){
         weatherApi(cityName);
 
-        var pin = document.getElementById("map");
-var latlong = "45.5152, 122.678"
+}});
 
-var srcValue = iframe.getAttribute("src");
-
-// Replace part of the text with a new value
-var newSrcValue = srcValue.replace("-33.8569,151.2152", latlong);
-
-// Update the src attribute with the new value
-iframe.setAttribute("src", newSrcValue);
-    }
-});
-
-weatherApi('Ḩeşār-e Sefīd');
+weatherApi('Seattle');
 
