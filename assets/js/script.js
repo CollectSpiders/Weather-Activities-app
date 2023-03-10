@@ -13,17 +13,26 @@ function weatherApi(cityName) {
             
             var temperature = data.main.temp;
             var description = data.weather[0].description;
+
             let latitude = data.coord.lat;
             let longitude = data.coord.lon;
             console.log(latitude)
             localStorage.setItem("lat", latitude);
             localStorage.setItem("lon", longitude);
+
+            var iconCode = data.weather[0].icon;
+            var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+
+
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
             displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
-            <h3 class="text-lg font-bold"> ${description}</h3 >
-            <p>Current temperature is ${temperature}</p>
+            <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold">${description}</h3>
+            <img src="${iconUrl}" alt="${description}">
+        </div>
+            <p class="text-lg font-bold"> ${temperature}</p>
             `;
             // add an HTML card /w tailwind API CSS info to line 17
 
@@ -53,7 +62,7 @@ map.setAttribute("src", newSrcValue);
 //.....
     const cityName = document.querySelector("#city-input").value;
     console.log(cityName);
-    if (cityName){
+    if (cityName) {
         weatherApi(cityName);
 
 }});
