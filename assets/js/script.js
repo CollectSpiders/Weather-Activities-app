@@ -11,12 +11,11 @@ function weatherApi(cityName) {
         })
         .then(function (data) {
             console.log(data);
-            var temperature = data.main.temp;
+            var temperature = Math.floor(data.main.temp) + ' \u00B0F';
             var description = data.weather[0].description;
-            let latitude = data.coord.lat;
-            let longitude = data.coord.lon;
-            localStorage.setItem('lat', latitude);
-            localStorage.setItem('lng', longitude);
+            var iconCode = data.weather[0].icon;
+            var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
             weatherCard.innerHTML = `
