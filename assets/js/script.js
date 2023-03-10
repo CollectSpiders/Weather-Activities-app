@@ -13,7 +13,8 @@ function weatherApi(cityName) {
             console.log(data);
             var temperature = data.main.temp;
             var description = data.weather[0].description;
-
+            let lat = data.coord.lat;
+            let long = data.coord.long;
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
             weatherCard.innerHTML = `
@@ -35,7 +36,19 @@ form.addEventListener('submit', function (event) {
     console.log(cityName);
     if (cityName){
         weatherApi(cityName);
+
+        var pin = document.getElementById("map");
+var latlong = "45.5152, 122.678"
+
+var srcValue = iframe.getAttribute("src");
+
+// Replace part of the text with a new value
+var newSrcValue = srcValue.replace("-33.8569,151.2152", latlong);
+
+// Update the src attribute with the new value
+iframe.setAttribute("src", newSrcValue);
     }
 });
 
 weatherApi('Ḩeşār-e Sefīd');
+
