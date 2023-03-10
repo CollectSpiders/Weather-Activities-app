@@ -10,14 +10,23 @@ function weatherApi(cityName) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            
             var temperature = data.main.temp;
             var description = data.weather[0].description;
+
+            let latitude = data.coord.lat;
+            let longitude = data.coord.lon;
+            console.log(latitude)
+            localStorage.setItem("lat", latitude);
+            localStorage.setItem("lon", longitude);
+
             var iconCode = data.weather[0].icon;
             var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
 
+
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
+            displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
             <div class="flex justify-between items-center">
             <h3 class="text-lg font-bold">${description}</h3>
@@ -33,14 +42,30 @@ function weatherApi(cityName) {
 
 const searchButton = document.getElementById('search-button');
 const form = document.getElementById('search-form')
-console.log(form);
 form.addEventListener('submit', function (event) {
     event.preventDefault();
+    //testcode
+var lat = localStorage.getItem("lat");
+var lon = localStorage.getItem("lon");
+var latlon = lat+","+lon;
+
+console.log(latlon);
+
+var map = document.getElementById("map");
+
+var srcValue = map.getAttribute("src");
+
+var newSrcValue = srcValue.replace("-33.8569,151.2152", latlon);
+
+
+map.setAttribute("src", newSrcValue);
+//.....
     const cityName = document.querySelector("#city-input").value;
     console.log(cityName);
     if (cityName) {
         weatherApi(cityName);
-    }
-});
 
-weatherApi('Ḩeşār-e Sefīd');
+}});
+
+weatherApi('Seattle');
+
