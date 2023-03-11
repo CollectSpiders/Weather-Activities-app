@@ -27,8 +27,11 @@ function weatherApi(cityName) {
             var weatherCard = document.createElement('div');
             displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
-            <h3 class="text-lg text-center font-bold"> ${description}</h3 >
-            <p>Current temperature is ${temperature}</p>
+            <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold">${description}</h3>
+            <img src="${iconUrl}" alt="${description}">
+        </div>
+            <p class="text-lg font-bold"> ${temperature}</p>
             `;
             // add an HTML card /w tailwind API CSS info to line 17
 
