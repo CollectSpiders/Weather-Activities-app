@@ -7,11 +7,11 @@ body {
     position: relative;
 }
 
-#map-container iframe {
+#map {
     border: 2px solid rgb(121, 114, 114);
     transition: transform 0.2s ease-in-out;
 }
 
-#map-container iframe:hover {
+#map:hover {
     transform: scale(1.02);
 }
