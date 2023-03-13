@@ -10,6 +10,7 @@ function weatherApi(cityName) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             var temperature = `${Math.round(data.main.temp)} \u00B0F`;
             var description = data.weather[0].description.toUpperCase();
 
@@ -21,7 +22,6 @@ function weatherApi(cityName) {
 
             var iconCode = data.weather[0].icon;
             var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
-
 
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
@@ -42,12 +42,14 @@ function weatherApi(cityName) {
             // console.log(myLatLon);
             var map = document.getElementById("map");
             map.src = "https://www.google.com/maps/embed/v1/view?key=AIzaSyDINBNfJky5chXW3us-42CNV9_4tRgMIdE&zoom=10&center=" + myLatLon;
-            console.log(map.src);
+            console.log(map.src); 
+
         });
 }
 
+
 const searchButton = document.getElementById('search-button');
-const form = document.getElementById('search-form')
+const form = document.getElementById('search-form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     //testcode
@@ -55,8 +57,7 @@ form.addEventListener('submit', function (event) {
     console.log(cityName);
     if (cityName){
         weatherApi(cityName);
-    }
-   
+    }  
 });
 
 weatherApi();
