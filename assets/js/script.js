@@ -1,4 +1,6 @@
 let displayWeather = document.getElementById('city-container');
+// Element to display activities list
+let activitiesDiv = document.getElementById('activities');
 
 function weatherApi(cityName) {
     var apiKey = "4a4acc2ad2028b514da851eb7125f0ac"
@@ -22,6 +24,7 @@ function weatherApi(cityName) {
 
             var iconCode = data.weather[0].icon;
             var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+            localStorage.setItem("icon-code", iconCode);
 
             //weatherInfo.forEach(list => 
             var weatherCard = document.createElement('div');
