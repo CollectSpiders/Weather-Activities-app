@@ -45,7 +45,10 @@ function weatherApi(cityName) {
             // console.log(myLatLon);
             var map = document.getElementById("map");
             map.src = "https://www.google.com/maps/embed/v1/view?key=AIzaSyDINBNfJky5chXW3us-42CNV9_4tRgMIdE&zoom=10&center=" + myLatLon;
-            console.log(map.src); 
+            console.log(map.src);
+            
+            // Display activities based upon current weather conditions
+            showActivities();
 
         });
 }
@@ -55,6 +58,8 @@ const searchButton = document.getElementById('search-button');
 const form = document.getElementById('search-form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
+    // Clear activities div before repopulating
+    activitiesDiv.innerHTML = "";
     //testcode
     const cityName = document.querySelector("#city-input").value;
     console.log(cityName);
