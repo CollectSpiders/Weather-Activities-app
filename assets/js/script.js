@@ -40,7 +40,6 @@ function weatherApi(cityName) {
             <p class="text-lg font-bold"> ${temperature}</p>
             </div>`;
 
-            weatherCard.classList.add('rounded-md', 'p-4');
             displayWeather.append(weatherCard);
 
             var myLat = localStorage.getItem("lat");
