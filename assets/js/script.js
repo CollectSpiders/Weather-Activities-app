@@ -32,11 +32,11 @@ function weatherApi(cityName) {
             var weatherCard = document.createElement('div');
             displayWeather.innerHTML = '';
             weatherCard.innerHTML = `
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center text-white">
             <h3 class="text-lg font-bold">${description}</h3>
             <img src="${iconUrl}" alt="${description}">
             </div>
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center text-white">
             <p class="text-lg font-bold"> ${temperature}</p>
             </div>`;
 
