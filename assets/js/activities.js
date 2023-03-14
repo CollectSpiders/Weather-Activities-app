@@ -44,10 +44,10 @@ function showActivities() {
   if (clearClouds.indexOf(iconCode) !== -1) {
     activitiesDiv.innerHTML = clearCloudsList;
   } else if (rain.indexOf(iconCode) !== -1) {
-  activitiesDiv.innerHTML = rainList;
+    activitiesDiv.innerHTML = rainList;
   } else if (thunderstorm.indexOf(iconCode) !== -1) {
-  activitiesDiv.innerHTML = thunderstormList;
+    activitiesDiv.innerHTML = thunderstormList;
   } else {
-  activitiesDiv.innerHTML = snowList;
+    activitiesDiv.innerHTML = snowList;
   };
 }
