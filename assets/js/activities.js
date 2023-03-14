@@ -33,6 +33,8 @@ function showActivities() {
   // Retrieve current weather icon code
   var iconCode = localStorage.getItem("icon-code");
   console.log(iconCode);
+  var activitiesContainer = document.getElementById('activities-container');
+  activitiesContainer.classList.remove('hidden');
 
   // Arrays of icon codes for possible weather conditions
   let clearClouds = ["01d", "01n", "02d", "02n", "03d", "03n", "04d", "04n"];
