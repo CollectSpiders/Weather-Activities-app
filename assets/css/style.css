@@ -13,17 +13,17 @@ body {
 }
 
 
-h3 {
+#activities h3 {
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-ul {
+#activities ul {
     list-style-type: disc;
     padding-left: 1rem;
 }
 
-li {
+#activities li {
     font-size: 1.25rem;
     font-weight: normal;
 }
