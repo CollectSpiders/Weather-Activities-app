@@ -16,7 +16,7 @@ function weatherApi(cityName) {
             // pulls the description of the weather variable from the API and displays it in caps
             var description = data.weather[0].description.toUpperCase();
 
-            // gets latitude and longitude and saves them to local storage
+            // gets latitude and longitude from the api and saves them to local storage
             let latitude = data.coord.lat;
             let longitude = data.coord.lon;
             console.log(latitude)
@@ -42,6 +42,7 @@ function weatherApi(cityName) {
 
             displayWeather.append(weatherCard);
 
+            // creates variables for latitude and longitude with the stored variables within local storage than pushes them into google maps api
             var myLat = localStorage.getItem("lat");
             var myLon = localStorage.getItem("lon");
             var myLatLon = myLat + "," + myLon;
@@ -59,7 +60,6 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
     // Clear activities div before repopulating
     activitiesDiv.innerHTML = "";
-    // test code
     const cityName = document.querySelector("#city-input").value;
     if (cityName) {
         weatherApi(cityName);
