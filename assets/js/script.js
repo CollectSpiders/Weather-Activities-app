@@ -5,7 +5,6 @@ let activitiesDiv = document.getElementById('activities');
 function weatherApi(cityName) {
     var apiKey = "4a4acc2ad2028b514da851eb7125f0ac"
     var weatherUrlRequest = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + cityName + "&appid=" + apiKey;
-    
 
     fetch(weatherUrlRequest)
         .then(function (response) {
@@ -23,7 +22,7 @@ function weatherApi(cityName) {
             console.log(latitude)
             localStorage.setItem("lat", latitude);
             localStorage.setItem("lon", longitude);
-            
+
             // gets the weather icon appropriate for the weather at the selected location
             var iconCode = data.weather[0].icon;
             var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
@@ -37,21 +36,23 @@ function weatherApi(cityName) {
             <h3 class="text-lg font-bold">${description}</h3>
             <img src="${iconUrl}" alt="${description}">
             </div>
-            <p class="text-lg font-bold"> ${temperature}</p>`;
+            <div class="flex flex-col items-center">
+            <p class="text-lg font-bold"> ${temperature}</p>
+            </div>`;
 
+            weatherCard.classList.add('rounded-md', 'p-4');
             displayWeather.append(weatherCard);
-            
+
             var myLat = localStorage.getItem("lat");
             var myLon = localStorage.getItem("lon");
             var myLatLon = myLat + "," + myLon;
             var map = document.getElementById("map");
             map.src = "https://www.google.com/maps/embed/v1/view?key=AIzaSyDINBNfJky5chXW3us-42CNV9_4tRgMIdE&zoom=10&center=" + myLatLon;
-            
+
             showActivities();
 
         });
 }
-
 
 const searchButton = document.getElementById('search-button');
 const form = document.getElementById('search-form');
@@ -61,9 +62,9 @@ form.addEventListener('submit', function (event) {
     activitiesDiv.innerHTML = "";
     // test code
     const cityName = document.querySelector("#city-input").value;
-    if (cityName){
+    if (cityName) {
         weatherApi(cityName);
-    }  
+    }
 });
 
 weatherApi();
