@@ -12,6 +12,25 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
-#map:hover {
-    transform: scale(1.02);
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+}
+
+li {
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
+/* Set the max width of the container at the small breakpoint defined in Tailwind */
+@media (min-width: 768px) {
+    .max-w-md {
+        max-width: 32rem;
+    }
 }
